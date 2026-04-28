@@ -1,8 +1,115 @@
 <?xml version="1.0" encoding="ASCII"?>
 <organization:Organization xmlns:organization="http://documentation.bonitasoft.com/organization-xml-schema/1.1">
   <customUserInfoDefinitions/>
-  <users/>
-  <roles/>
-  <groups/>
-  <memberships/>
+  <users>
+    <user userName="Mila">
+      <firstName>Mila</firstName>
+      <lastName>-</lastName>
+      <personalData/>
+      <professionalData/>
+      <password encrypted="false">bpm</password>
+      <customUserInfoValues/>
+    </user>
+    <user userName="Rosa">
+      <firstName>Rosa</firstName>
+      <lastName>-</lastName>
+      <jobTitle>Costurera</jobTitle>
+      <personalData/>
+      <professionalData/>
+      <password encrypted="false">bpm</password>
+      <customUserInfoValues/>
+    </user>
+    <user userName="Patricia">
+      <jobTitle>Costurera</jobTitle>
+      <personalData/>
+      <professionalData/>
+      <password encrypted="false">bpm</password>
+      <customUserInfoValues/>
+    </user>
+    <user userName="Laura">
+      <firstName>Laura</firstName>
+      <lastName>-</lastName>
+      <personalData/>
+      <professionalData/>
+      <password encrypted="false">bpm</password>
+      <customUserInfoValues/>
+    </user>
+    <user userName="Ana">
+      <personalData/>
+      <professionalData/>
+      <password encrypted="false">bpm</password>
+      <customUserInfoValues/>
+    </user>
+  </users>
+  <roles>
+    <role name="Modista">
+      <displayName>Modista</displayName>
+    </role>
+    <role name="ResponsableTaller">
+      <displayName>ResponsableTaller</displayName>
+    </role>
+    <role name="AsesorVentas">
+      <displayName>AsesorVentas</displayName>
+    </role>
+    <role name="ResponsableLogistica">
+      <displayName>ResponsableLogistica</displayName>
+    </role>
+    <role name="Gerente">
+      <displayName>Gerente</displayName>
+    </role>
+    <role name="Dise&#xf1;adora">
+      <displayName>Dise&#xf1;adora</displayName>
+    </role>
+  </roles>
+  <groups>
+    <group name="Taller">
+      <displayName>Taller</displayName>
+    </group>
+    <group name="AtencionCliente">
+      <displayName>AtencionCliente</displayName>
+    </group>
+    <group name="Logistica">
+      <displayName>Logistica</displayName>
+    </group>
+    <group name="Direccion">
+      <displayName>Direccion</displayName>
+    </group>
+  </groups>
+  <memberships>
+    <membership>
+      <userName>Mila</userName>
+      <roleName>Gerente</roleName>
+      <groupName>Direccion</groupName>
+    </membership>
+    <membership>
+      <userName>Rosa</userName>
+      <roleName>ResponsableTaller</roleName>
+      <groupName>Taller</groupName>
+    </membership>
+    <membership>
+      <userName>Patricia</userName>
+      <roleName>Modista</roleName>
+      <groupName>Taller</groupName>
+    </membership>
+    <membership>
+      <userName>Mila</userName>
+      <roleName>AsesorVentas</roleName>
+      <groupName>AtencionCliente</groupName>
+    </membership>
+    <membership>
+      <userName>Laura</userName>
+      <roleName>ResponsableLogistica</roleName>
+      <groupName>Logistica</groupName>
+    </membership>
+    <membership>
+      <userName>Mila</userName>
+      <roleName>Dise&#xf1;adora</roleName>
+      <groupName>Taller</groupName>
+    </membership>
+    <membership>
+      <userName>Ana</userName>
+      <roleName>Modista</roleName>
+      <groupName>Taller</groupName>
+    </membership>
+  </memberships>
 </organization:Organization>
