@@ -74,6 +74,9 @@
     <group name="Direccion">
       <displayName>Direccion</displayName>
     </group>
+    <group name="Cliente">
+      <displayName>Cliente</displayName>
+    </group>
   </groups>
   <memberships>
     <membership>
