@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:decision="http://www.bonitasoft.org/ns/bpm/process/decision" xmlns:expression="http://www.bonitasoft.org/ns/bpm/expression" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:process="http://www.bonitasoft.org/ns/bpm/process">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:connectorconfiguration="http://www.bonitasoft.org/model/connector/configuration" xmlns:decision="http://www.bonitasoft.org/ns/bpm/process/decision" xmlns:definition="http://www.bonitasoft.org/ns/connector/definition/6.1" xmlns:expression="http://www.bonitasoft.org/ns/bpm/expression" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:process="http://www.bonitasoft.org/ns/bpm/process">
   <process:MainProcess xmi:id="_tBT6kELfEfGXst6p_f55Uw" name="GestionArreglos" bonitaModelVersion="8">
-    <elements xmi:type="process:Pool" xmi:id="_tBT6kULfEfGXst6p_f55Uw" name="Arreglos a medida">
+    <elements xmi:type="process:Pool" xmi:id="_tBT6kULfEfGXst6p_f55Uw" name="Arreglos">
       <elements xmi:type="process:Lane" xmi:id="_tBT6kkLfEfGXst6p_f55Uw" name="Asesor de ventas" actor="_ZBRPgELmEfGXst6p_f55Uw">
         <elements xmi:type="process:StartEvent" xmi:id="_tBT6k0LfEfGXst6p_f55Uw" name="SolicitudCliente" outgoing="_cMNbQEPHEfGlNrkC6coVUg">
           <dynamicLabel xmi:type="expression:Expression" xmi:id="_tBT6lELfEfGXst6p_f55Uw" name="" content="" returnTypeFixed="true"/>
@@ -17,6 +17,28 @@
           <dynamicLabel xmi:type="expression:Expression" xmi:id="_RdmfMULlEfGXst6p_f55Uw" name="" content="" returnTypeFixed="true"/>
           <dynamicDescription xmi:type="expression:Expression" xmi:id="_RdmfMELlEfGXst6p_f55Uw" name="" content="" returnTypeFixed="true"/>
           <stepSummary xmi:type="expression:Expression" xmi:id="_RdmfMkLlEfGXst6p_f55Uw" name="" content="" returnTypeFixed="true"/>
+          <connectors xmi:type="process:Connector" xmi:id="_b6cvUEPnEfGuMvUJnAgzLA" name="enviarWebhookN8N" definitionId="scripting-groovy-script" event="ON_FINISH" definitionVersion="1.0.1">
+            <configuration xmi:type="connectorconfiguration:ConnectorConfiguration" xmi:id="_b6cvUUPnEfGuMvUJnAgzLA" definitionId="scripting-groovy-script" version="1.0.1" modelVersion="8">
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_b6cvUkPnEfGuMvUJnAgzLA" key="script">
+                <expression xmi:type="expression:Expression" xmi:id="_b6cvU0PnEfGuMvUJnAgzLA" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_b6cvVEPnEfGuMvUJnAgzLA" key="variables">
+                <expression xmi:type="expression:Expression" xmi:id="_b6cvVUPnEfGuMvUJnAgzLA" returnType="java.util.List" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_b6cvVkPnEfGuMvUJnAgzLA" key="fakeScriptExpression">
+                <expression xmi:type="expression:Expression" xmi:id="_b6cvV0PnEfGuMvUJnAgzLA" name="newScript()" content="import groovy.json.JsonBuilder&#xD;&#xA;&#xD;&#xA;// Construimos el JSON con los datos que acabas de guardar en la operación&#xD;&#xA;def builder = new JsonBuilder()&#xD;&#xA;builder {&#xD;&#xA;&#x9;arreglo_id nuevaOrden.referenciaOdoo&#xD;&#xA;&#x9;nuevo_estado nuevaOrden.estadoActual&#xD;&#xA;&#x9;cliente_email nuevaOrden.emailClienta&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;def url = &quot;http://localhost:5678/webhook-test/bonita-callback&quot;&#xD;&#xA;&#xD;&#xA;try {&#xD;&#xA;&#x9;def connection = new URL(url).openConnection()&#xD;&#xA;&#x9;connection.setRequestMethod(&quot;POST&quot;)&#xD;&#xA;&#x9;connection.setRequestProperty(&quot;Content-Type&quot;, &quot;application/json&quot;)&#xD;&#xA;&#x9;connection.doOutput = true&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;def writer = new OutputStreamWriter(connection.outputStream)&#xD;&#xA;&#x9;writer.write(builder.toString())&#xD;&#xA;&#x9;writer.flush()&#xD;&#xA;&#x9;writer.close()&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;return &quot;OK: &quot; + connection.responseCode&#xD;&#xA;} catch (Exception e) {&#xD;&#xA;&#x9;return &quot;Error: &quot; + e.message&#xD;&#xA;}" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="java.lang.Object" returnTypeFixed="true">
+                  <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_b6cvWEPnEfGuMvUJnAgzLA" name="nuevaOrden" dataType="_tBT6xELfEfGXst6p_f55Uw" className="com.company.model.OrdenArreglo"/>
+                </expression>
+              </parameters>
+            </configuration>
+            <outputs xmi:type="expression:Operation" xmi:id="_b6cvWUPnEfGuMvUJnAgzLA">
+              <leftOperand xmi:type="expression:Expression" xmi:id="_b6cvWkPnEfGuMvUJnAgzLA"/>
+              <rightOperand xmi:type="expression:Expression" xmi:id="_b6cvW0PnEfGuMvUJnAgzLA" name="result" content="result" type="CONNECTOR_OUTPUT_TYPE" returnType="java.lang.Object">
+                <referencedElements xmi:type="definition:Output" xmi:id="_b6cvXEPnEfGuMvUJnAgzLA" name="result" type="java.lang.Object"/>
+              </rightOperand>
+              <operator xmi:type="expression:Operator" xmi:id="_b6cvXUPnEfGuMvUJnAgzLA" type="ASSIGNMENT"/>
+            </outputs>
+          </connectors>
           <loopCondition xmi:type="expression:Expression" xmi:id="_RdmfM0LlEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
           <loopMaximum xmi:type="expression:Expression" xmi:id="_RdmfNELlEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
           <cardinalityExpression xmi:type="expression:Expression" xmi:id="_RdmfNULlEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
@@ -32,6 +54,28 @@
           <dynamicLabel xmi:type="expression:Expression" xmi:id="_1FtAEkLlEfGXst6p_f55Uw" name="" content="" returnTypeFixed="true"/>
           <dynamicDescription xmi:type="expression:Expression" xmi:id="_1FtAEULlEfGXst6p_f55Uw" name="" content="" returnTypeFixed="true"/>
           <stepSummary xmi:type="expression:Expression" xmi:id="_1FtAE0LlEfGXst6p_f55Uw" name="" content="" returnTypeFixed="true"/>
+          <connectors xmi:type="process:Connector" xmi:id="_ooE4gEPnEfGuMvUJnAgzLA" name="enviarWebHookN8N" definitionId="scripting-groovy-script" event="ON_FINISH" definitionVersion="1.0.1">
+            <configuration xmi:type="connectorconfiguration:ConnectorConfiguration" xmi:id="_ooE4gUPnEfGuMvUJnAgzLA" definitionId="scripting-groovy-script" version="1.0.1" modelVersion="8">
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_ooE4gkPnEfGuMvUJnAgzLA" key="script">
+                <expression xmi:type="expression:Expression" xmi:id="_ooE4g0PnEfGuMvUJnAgzLA" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_ooE4hEPnEfGuMvUJnAgzLA" key="variables">
+                <expression xmi:type="expression:Expression" xmi:id="_ooE4hUPnEfGuMvUJnAgzLA" returnType="java.util.List" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_ooE4hkPnEfGuMvUJnAgzLA" key="fakeScriptExpression">
+                <expression xmi:type="expression:Expression" xmi:id="_ooE4h0PnEfGuMvUJnAgzLA" name="newScript()" content="import groovy.json.JsonBuilder&#xD;&#xA;&#xD;&#xA;// Construimos el JSON con los datos actualizados&#xD;&#xA;def builder = new JsonBuilder()&#xD;&#xA;builder {&#xD;&#xA;&#x9;arreglo_id nuevaOrden.referenciaOdoo&#xD;&#xA;&#x9;nuevo_estado nuevaOrden.estadoActual&#xD;&#xA;&#x9;cliente_email nuevaOrden.emailClienta&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// URL de tu n8n configurada&#xD;&#xA;def url = &quot;http://localhost:5678/webhook-test/bonita-callback&quot;&#xD;&#xA;&#xD;&#xA;try {&#xD;&#xA;&#x9;def connection = new URL(url).openConnection()&#xD;&#xA;&#x9;connection.setRequestMethod(&quot;POST&quot;)&#xD;&#xA;&#x9;connection.setRequestProperty(&quot;Content-Type&quot;, &quot;application/json&quot;)&#xD;&#xA;&#x9;connection.doOutput = true&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;def writer = new OutputStreamWriter(connection.outputStream)&#xD;&#xA;&#x9;writer.write(builder.toString())&#xD;&#xA;&#x9;writer.flush()&#xD;&#xA;&#x9;writer.close()&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;return &quot;OK: &quot; + connection.responseCode&#xD;&#xA;} catch (Exception e) {&#xD;&#xA;&#x9;return &quot;Error: &quot; + e.message&#xD;&#xA;}" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="java.lang.Object" returnTypeFixed="true">
+                  <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_ooE4iEPnEfGuMvUJnAgzLA" name="nuevaOrden" dataType="_tBT6xELfEfGXst6p_f55Uw" className="com.company.model.OrdenArreglo"/>
+                </expression>
+              </parameters>
+            </configuration>
+            <outputs xmi:type="expression:Operation" xmi:id="_ooE4iUPnEfGuMvUJnAgzLA">
+              <leftOperand xmi:type="expression:Expression" xmi:id="_ooE4ikPnEfGuMvUJnAgzLA"/>
+              <rightOperand xmi:type="expression:Expression" xmi:id="_ooE4i0PnEfGuMvUJnAgzLA" name="result" content="result" type="CONNECTOR_OUTPUT_TYPE" returnType="java.lang.Object">
+                <referencedElements xmi:type="definition:Output" xmi:id="_ooE4jEPnEfGuMvUJnAgzLA" name="result" type="java.lang.Object"/>
+              </rightOperand>
+              <operator xmi:type="expression:Operator" xmi:id="_ooE4jUPnEfGuMvUJnAgzLA" type="ASSIGNMENT"/>
+            </outputs>
+          </connectors>
           <loopCondition xmi:type="expression:Expression" xmi:id="_1FtAFELlEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
           <loopMaximum xmi:type="expression:Expression" xmi:id="_1FtAFULlEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
           <cardinalityExpression xmi:type="expression:Expression" xmi:id="_1FtAFkLlEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
@@ -53,6 +97,15 @@
             </rightOperand>
             <operator xmi:type="expression:Operator" xmi:id="_yD9_V0LjEfGXst6p_f55Uw" type="JAVA_METHOD" expression="setArregloAprobado">
               <inputTypes>java.lang.Boolean</inputTypes>
+            </operator>
+          </operations>
+          <operations xmi:type="expression:Operation" xmi:id="_5Kl6gEPlEfGuMvUJnAgzLA">
+            <leftOperand xmi:type="expression:Expression" xmi:id="_5Kl6gUPlEfGuMvUJnAgzLA" name="nuevaOrden" content="nuevaOrden" type="TYPE_VARIABLE" returnType="com.company.model.OrdenArreglo">
+              <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_52hMYEPlEfGuMvUJnAgzLA" name="nuevaOrden" dataType="_tBT6xELfEfGXst6p_f55Uw" className="com.company.model.OrdenArreglo"/>
+            </leftOperand>
+            <rightOperand xmi:type="expression:Expression" xmi:id="_5Kl6gkPlEfGuMvUJnAgzLA" name="&quot;Evaluado&quot;" content="&quot;Evaluado&quot;"/>
+            <operator xmi:type="expression:Operator" xmi:id="_5Kl6g0PlEfGuMvUJnAgzLA" type="JAVA_METHOD" expression="setEstadoActual">
+              <inputTypes>java.lang.String</inputTypes>
             </operator>
           </operations>
           <loopCondition xmi:type="expression:Expression" xmi:id="_nKy2VELjEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
@@ -111,6 +164,28 @@
           <dynamicLabel xmi:type="expression:Expression" xmi:id="_X2enwUPgEfGuMvUJnAgzLA" name="" content="" returnTypeFixed="true"/>
           <dynamicDescription xmi:type="expression:Expression" xmi:id="_X2enwEPgEfGuMvUJnAgzLA" name="" content="" returnTypeFixed="true"/>
           <stepSummary xmi:type="expression:Expression" xmi:id="_X2enwkPgEfGuMvUJnAgzLA" name="" content="" returnTypeFixed="true"/>
+          <connectors xmi:type="process:Connector" xmi:id="_iwh2UEPnEfGuMvUJnAgzLA" name="enviarWebhookN8N" definitionId="scripting-groovy-script" event="ON_FINISH" definitionVersion="1.0.1">
+            <configuration xmi:type="connectorconfiguration:ConnectorConfiguration" xmi:id="_iwh2UUPnEfGuMvUJnAgzLA" definitionId="scripting-groovy-script" version="1.0.1" modelVersion="8">
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_iwh2UkPnEfGuMvUJnAgzLA" key="script">
+                <expression xmi:type="expression:Expression" xmi:id="_iwh2U0PnEfGuMvUJnAgzLA" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_iwh2VEPnEfGuMvUJnAgzLA" key="variables">
+                <expression xmi:type="expression:Expression" xmi:id="_iwh2VUPnEfGuMvUJnAgzLA" returnType="java.util.List" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_iwh2VkPnEfGuMvUJnAgzLA" key="fakeScriptExpression">
+                <expression xmi:type="expression:Expression" xmi:id="_iwh2V0PnEfGuMvUJnAgzLA" name="newScript()" content="import groovy.json.JsonBuilder&#xD;&#xA;&#xD;&#xA;// Construimos el JSON con los datos actualizados&#xD;&#xA;def builder = new JsonBuilder()&#xD;&#xA;builder {&#xD;&#xA;&#x9;arreglo_id nuevaOrden.referenciaOdoo&#xD;&#xA;&#x9;nuevo_estado nuevaOrden.estadoActual&#xD;&#xA;&#x9;cliente_email nuevaOrden.emailClienta&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// URL de tu n8n configurada&#xD;&#xA;def url = &quot;http://localhost:5678/webhook-test/bonita-callback&quot;&#xD;&#xA;&#xD;&#xA;try {&#xD;&#xA;&#x9;def connection = new URL(url).openConnection()&#xD;&#xA;&#x9;connection.setRequestMethod(&quot;POST&quot;)&#xD;&#xA;&#x9;connection.setRequestProperty(&quot;Content-Type&quot;, &quot;application/json&quot;)&#xD;&#xA;&#x9;connection.doOutput = true&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;def writer = new OutputStreamWriter(connection.outputStream)&#xD;&#xA;&#x9;writer.write(builder.toString())&#xD;&#xA;&#x9;writer.flush()&#xD;&#xA;&#x9;writer.close()&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;return &quot;OK: &quot; + connection.responseCode&#xD;&#xA;} catch (Exception e) {&#xD;&#xA;&#x9;return &quot;Error: &quot; + e.message&#xD;&#xA;}" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="java.lang.Object" returnTypeFixed="true">
+                  <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_iwh2WEPnEfGuMvUJnAgzLA" name="nuevaOrden" dataType="_tBT6xELfEfGXst6p_f55Uw" className="com.company.model.OrdenArreglo"/>
+                </expression>
+              </parameters>
+            </configuration>
+            <outputs xmi:type="expression:Operation" xmi:id="_iwh2WUPnEfGuMvUJnAgzLA">
+              <leftOperand xmi:type="expression:Expression" xmi:id="_iwh2WkPnEfGuMvUJnAgzLA"/>
+              <rightOperand xmi:type="expression:Expression" xmi:id="_iwh2W0PnEfGuMvUJnAgzLA" name="result" content="result" type="CONNECTOR_OUTPUT_TYPE" returnType="java.lang.Object">
+                <referencedElements xmi:type="definition:Output" xmi:id="_iwh2XEPnEfGuMvUJnAgzLA" name="result" type="java.lang.Object"/>
+              </rightOperand>
+              <operator xmi:type="expression:Operator" xmi:id="_iwh2XUPnEfGuMvUJnAgzLA" type="ASSIGNMENT"/>
+            </outputs>
+          </connectors>
           <loopCondition xmi:type="expression:Expression" xmi:id="_X2enw0PgEfGuMvUJnAgzLA" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
           <loopMaximum xmi:type="expression:Expression" xmi:id="_X2enxEPgEfGuMvUJnAgzLA" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
           <cardinalityExpression xmi:type="expression:Expression" xmi:id="_X2fO0EPgEfGuMvUJnAgzLA" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
@@ -124,21 +199,21 @@
         </elements>
       </elements>
       <data xmi:type="process:BusinessObjectData" xmi:id="_FgBk0ELjEfGXst6p_f55Uw" name="nuevaOrden" dataType="_tBT6xELfEfGXst6p_f55Uw" className="com.company.model.OrdenArreglo">
-        <defaultValue xmi:type="expression:Expression" xmi:id="_BhxdJkPAEfGlNrkC6coVUg" name="initNuevaOrden()" content="def orden = new com.company.model.OrdenArreglo()&#xD;&#xA;&#xD;&#xA;orden.referenciaOdoo = referenciaOdoo&#xD;&#xA;orden.nombreCliente = nombreCliente&#xD;&#xA;orden.emailClienta = emailClienta&#xD;&#xA;orden.descripcionArreglo = descripcionArreglo&#xD;&#xA;orden.estadoActual = estadoInicial&#xD;&#xA;orden.arregloAprobado = false&#xD;&#xA;&#xD;&#xA;return orden" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="com.company.model.OrdenArreglo">
-          <referencedElements xmi:type="process:ContractInput" xmi:id="_UC__0EPEEfGlNrkC6coVUg" name="nombreCliente">
-            <mapping xmi:type="process:ContractInputMapping" xmi:id="_UC__0UPEEfGlNrkC6coVUg"/>
+        <defaultValue xmi:type="expression:Expression" xmi:id="_BhxdJkPAEfGlNrkC6coVUg" name="initNuevaOrden()" content="import com.company.model.OrdenArreglo&#xD;&#xA;&#xD;&#xA;// 1. Crear el objeto&#xD;&#xA;OrdenArreglo o = new OrdenArreglo()&#xD;&#xA;&#xD;&#xA;// 2. Mapeo ultra-seguro (usando try-catch para que no aborte)&#xD;&#xA;try {&#xD;&#xA;    // Usamos el operador ?. para que si algo es nulo no explote&#xD;&#xA;    o.referenciaOdoo = referenciaOdoo?.toString() ?: &quot;REF-TEMP&quot;&#xD;&#xA;    o.nombreCliente = nombreCliente?.toString() ?: &quot;Cliente Desconocido&quot;&#xD;&#xA;    o.emailClienta = emailClienta?.toString() ?: &quot;info@bombon.com&quot;&#xD;&#xA;    o.descripcionArreglo = descripcionArreglo?.toString() ?: &quot;Sin descripción&quot;&#xD;&#xA;    o.estadoActual = estadoInicial?.toString() ?: &quot;Recibido&quot;&#xD;&#xA;    o.arregloAprobado = false&#xD;&#xA;    &#xD;&#xA;    return o&#xD;&#xA;} catch (Exception e) {&#xD;&#xA;    // Si falla el mapeo, devolvemos un objeto básico para que el proceso ARRANQUE&#xD;&#xA;    o.referenciaOdoo = &quot;ERROR-MAPEO&quot;&#xD;&#xA;    return o&#xD;&#xA;}" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="com.company.model.OrdenArreglo">
+          <referencedElements xmi:type="process:ContractInput" xmi:id="_jzJswEPuEfG1bbj620DmHA" name="nombreCliente">
+            <mapping xmi:type="process:ContractInputMapping" xmi:id="_jzJswUPuEfG1bbj620DmHA"/>
           </referencedElements>
-          <referencedElements xmi:type="process:ContractInput" xmi:id="_UDAm4EPEEfGlNrkC6coVUg" name="emailClienta">
-            <mapping xmi:type="process:ContractInputMapping" xmi:id="_UDAm4UPEEfGlNrkC6coVUg"/>
+          <referencedElements xmi:type="process:ContractInput" xmi:id="_jzKT0EPuEfG1bbj620DmHA" name="emailClienta">
+            <mapping xmi:type="process:ContractInputMapping" xmi:id="_jzKT0UPuEfG1bbj620DmHA"/>
           </referencedElements>
-          <referencedElements xmi:type="process:ContractInput" xmi:id="_UDAm4kPEEfGlNrkC6coVUg" name="descripcionArreglo">
-            <mapping xmi:type="process:ContractInputMapping" xmi:id="_UDAm40PEEfGlNrkC6coVUg"/>
+          <referencedElements xmi:type="process:ContractInput" xmi:id="_jzKT0kPuEfG1bbj620DmHA" name="descripcionArreglo">
+            <mapping xmi:type="process:ContractInputMapping" xmi:id="_jzKT00PuEfG1bbj620DmHA"/>
           </referencedElements>
-          <referencedElements xmi:type="process:ContractInput" xmi:id="_UDAm5EPEEfGlNrkC6coVUg" name="referenciaOdoo">
-            <mapping xmi:type="process:ContractInputMapping" xmi:id="_UDAm5UPEEfGlNrkC6coVUg"/>
+          <referencedElements xmi:type="process:ContractInput" xmi:id="_jzKT1EPuEfG1bbj620DmHA" name="referenciaOdoo">
+            <mapping xmi:type="process:ContractInputMapping" xmi:id="_jzKT1UPuEfG1bbj620DmHA"/>
           </referencedElements>
-          <referencedElements xmi:type="process:ContractInput" xmi:id="_UDAm5kPEEfGlNrkC6coVUg" name="estadoInicial">
-            <mapping xmi:type="process:ContractInputMapping" xmi:id="_UDAm50PEEfGlNrkC6coVUg"/>
+          <referencedElements xmi:type="process:ContractInput" xmi:id="_jzKT1kPuEfG1bbj620DmHA" name="estadoInicial">
+            <mapping xmi:type="process:ContractInputMapping" xmi:id="_jzKT10PuEfG1bbj620DmHA"/>
           </referencedElements>
         </defaultValue>
       </data>
@@ -146,7 +221,7 @@
         <defaultValue xmi:type="expression:Expression" xmi:id="_sa5CoUPCEfGlNrkC6coVUg" content="" returnType="java.lang.Long"/>
       </data>
       <formMapping xmi:type="process:FormMapping" xmi:id="_tBT6pELfEfGXst6p_f55Uw">
-        <targetForm xmi:type="expression:Expression" xmi:id="_XtCyEELnEfGXst6p_f55Uw" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+        <targetForm xmi:type="expression:Expression" xmi:id="_MLXRMEPwEfGfGKFthyjeGw" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
       </formMapping>
       <overviewFormMapping xmi:type="process:FormMapping" xmi:id="_tBT6pkLfEfGXst6p_f55Uw">
         <targetForm xmi:type="expression:Expression" xmi:id="_tBT6p0LfEfGXst6p_f55Uw" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
@@ -183,8 +258,8 @@
       </connections>
       <connections xmi:type="process:SequenceFlow" xmi:id="_amn0IEPgEfGuMvUJnAgzLA" target="_X2RzcEPgEfGuMvUJnAgzLA" source="_XVOp8EPiEfGuMvUJnAgzLA">
         <decisionTable xmi:type="decision:DecisionTable" xmi:id="_ampCQEPgEfGuMvUJnAgzLA"/>
-        <condition xmi:type="expression:Expression" xmi:id="_ampCQUPgEfGuMvUJnAgzLA" name="newScript()" content="nuevaOrden.estadoActual != &quot;Listo&quot;" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="java.lang.Boolean" returnTypeFixed="true">
-          <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_BpmrAEPiEfGuMvUJnAgzLA" name="nuevaOrden" dataType="_tBT6xELfEfGXst6p_f55Uw" className="com.company.model.OrdenArreglo"/>
+        <condition xmi:type="expression:Expression" xmi:id="_ampCQUPgEfGuMvUJnAgzLA" name="newScript()" content="nuevaOrden.estadoActual != &quot;listo&quot;" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="java.lang.Boolean" returnTypeFixed="true">
+          <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_u-i5EEPsEfG1bbj620DmHA" name="nuevaOrden" dataType="_tBT6xELfEfGXst6p_f55Uw" className="com.company.model.OrdenArreglo"/>
         </condition>
       </connections>
       <connections xmi:type="process:SequenceFlow" xmi:id="_piQQgEPhEfGuMvUJnAgzLA" target="_1FtAEELlEfGXst6p_f55Uw" source="_XVOp8EPiEfGuMvUJnAgzLA" isDefault="true">
