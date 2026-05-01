@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="ASCII"?>
 <organization:Organization xmlns:organization="http://documentation.bonitasoft.com/organization-xml-schema/1.1">
-  <customUserInfoDefinitions/>
+  <customUserInfoDefinitions>
+    <customUserInfoDefinition>
+      <name>especialidad</name>
+      <description></description>
+    </customUserInfoDefinition>
+  </customUserInfoDefinitions>
   <users>
     <user userName="Mila">
       <firstName>Mila</firstName>
       <lastName>-</lastName>
       <personalData/>
-      <professionalData/>
+      <professionalData>
+        <email>mila@gmail.com</email>
+      </professionalData>
       <password encrypted="false">bpm</password>
-      <customUserInfoValues/>
+      <customUserInfoValues>
+        <customUserInfoValue>
+          <name>especialidad</name>
+          <value></value>
+        </customUserInfoValue>
+      </customUserInfoValues>
     </user>
     <user userName="Rosa">
       <firstName>Rosa</firstName>
@@ -17,14 +29,24 @@
       <personalData/>
       <professionalData/>
       <password encrypted="false">bpm</password>
-      <customUserInfoValues/>
+      <customUserInfoValues>
+        <customUserInfoValue>
+          <name>especialidad</name>
+          <value>blusa</value>
+        </customUserInfoValue>
+      </customUserInfoValues>
     </user>
     <user userName="Patricia">
       <jobTitle>Costurera</jobTitle>
       <personalData/>
       <professionalData/>
       <password encrypted="false">bpm</password>
-      <customUserInfoValues/>
+      <customUserInfoValues>
+        <customUserInfoValue>
+          <name>especialidad</name>
+          <value>pantalon</value>
+        </customUserInfoValue>
+      </customUserInfoValues>
     </user>
     <user userName="Laura">
       <firstName>Laura</firstName>
@@ -32,13 +54,49 @@
       <personalData/>
       <professionalData/>
       <password encrypted="false">bpm</password>
-      <customUserInfoValues/>
+      <customUserInfoValues>
+        <customUserInfoValue>
+          <name>especialidad</name>
+          <value></value>
+        </customUserInfoValue>
+      </customUserInfoValues>
     </user>
     <user userName="Ana">
       <personalData/>
       <professionalData/>
       <password encrypted="false">bpm</password>
-      <customUserInfoValues/>
+      <customUserInfoValues>
+        <customUserInfoValue>
+          <name>especialidad</name>
+          <value>vestido</value>
+        </customUserInfoValue>
+      </customUserInfoValues>
+    </user>
+    <user userName="marta">
+      <firstName>Marta</firstName>
+      <lastName>Martinez</lastName>
+      <personalData/>
+      <professionalData/>
+      <password encrypted="false">bpm</password>
+      <customUserInfoValues>
+        <customUserInfoValue>
+          <name>especialidad</name>
+          <value></value>
+        </customUserInfoValue>
+      </customUserInfoValues>
+    </user>
+    <user userName="Usuario1">
+      <firstName>Alba</firstName>
+      <lastName>Alvarez</lastName>
+      <personalData/>
+      <professionalData/>
+      <password encrypted="false">bpm</password>
+      <customUserInfoValues>
+        <customUserInfoValue>
+          <name>especialidad</name>
+          <value></value>
+        </customUserInfoValue>
+      </customUserInfoValues>
     </user>
   </users>
   <roles>
@@ -59,6 +117,9 @@
     </role>
     <role name="Dise&#xf1;adora">
       <displayName>Dise&#xf1;adora</displayName>
+    </role>
+    <role name="cliente">
+      <displayName>Cliente</displayName>
     </role>
   </roles>
   <groups>
@@ -113,6 +174,16 @@
       <userName>Ana</userName>
       <roleName>Modista</roleName>
       <groupName>Taller</groupName>
+    </membership>
+    <membership>
+      <userName>Usuario1</userName>
+      <roleName>cliente</roleName>
+      <groupName>Cliente</groupName>
+    </membership>
+    <membership>
+      <userName>marta</userName>
+      <roleName>cliente</roleName>
+      <groupName>Cliente</groupName>
     </membership>
   </memberships>
 </organization:Organization>
