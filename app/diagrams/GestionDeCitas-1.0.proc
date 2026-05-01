@@ -133,7 +133,7 @@
                 <expression xmi:type="expression:Expression" xmi:id="_B2Aec0WGEfGNMp7L6JEwyg" name="localhost" content="localhost" returnTypeFixed="true"/>
               </parameters>
               <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_B2AedEWGEfGNMp7L6JEwyg" key="smtpPort">
-                <expression xmi:type="expression:Expression" xmi:id="_B2AedUWGEfGNMp7L6JEwyg" name="25" content="25" returnType="java.lang.Integer" returnTypeFixed="true"/>
+                <expression xmi:type="expression:Expression" xmi:id="_B2AedUWGEfGNMp7L6JEwyg" name="2525" content="2525" returnType="java.lang.Integer" returnTypeFixed="true"/>
               </parameters>
               <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_B2AedkWGEfGNMp7L6JEwyg" key="sslSupport">
                 <expression xmi:type="expression:Expression" xmi:id="_B2Aed0WGEfGNMp7L6JEwyg" name="false" content="false" returnType="java.lang.Boolean" returnTypeFixed="true"/>
