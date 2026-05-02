@@ -179,13 +179,34 @@
                 <expression xmi:type="expression:Expression" xmi:id="_B2AejkWGEfGNMp7L6JEwyg" content="" returnTypeFixed="true"/>
               </parameters>
               <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_B2Aej0WGEfGNMp7L6JEwyg" key="subject">
-                <expression xmi:type="expression:Expression" xmi:id="_B2AekEWGEfGNMp7L6JEwyg" name="Cita aceptada" content="Cita aceptada" returnTypeFixed="true"/>
+                <expression xmi:type="expression:Expression" xmi:id="_B2AekEWGEfGNMp7L6JEwyg" name="Cita confirmada" content="Cita confirmada" returnTypeFixed="true"/>
               </parameters>
               <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_B2AekUWGEfGNMp7L6JEwyg" key="html">
                 <expression xmi:type="expression:Expression" xmi:id="_B2AekkWGEfGNMp7L6JEwyg" name="true" content="true" returnType="java.lang.Boolean" returnTypeFixed="true"/>
               </parameters>
               <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_B2Aek0WGEfGNMp7L6JEwyg" key="message">
-                <expression xmi:type="expression:Expression" xmi:id="_B2AelEWGEfGNMp7L6JEwyg" name="&lt;pattern-expression>" content="&lt;p>Este es un email de prueba&lt;/p>&#xA;" type="TYPE_PATTERN" returnTypeFixed="true"/>
+                <expression xmi:type="expression:Expression" xmi:id="_B2AelEWGEfGNMp7L6JEwyg" name="&lt;pattern-expression>" content="&lt;div style=&quot;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #444; max-width: 600px; border: 1px solid #eee; border-radius: 10px; overflow: hidden;&quot;>&#xA;  &lt;div style=&quot;background-color: #e8f5e9; padding: 25px; text-align: center; border-bottom: 2px solid #c8e6c9;&quot;>&#xA;    &lt;h2 style=&quot;color: #2e7d32; margin: 0;&quot;>¡Tu cita está confirmada!&lt;/h2>&#xA;  &lt;/div>&#xA;  &#xA;  &lt;div style=&quot;padding: 30px; line-height: 1.6;&quot;>&#xA;    &lt;p>Hola &lt;strong>${cita.nombreCliente}&lt;/strong>,&lt;/p>&#xA;    &#xA;    &lt;p>Te confirmamos que hemos reservado un espacio en nuestra agenda para atenderte en relación a: &lt;strong>${cita.prenda}&lt;/strong>.&lt;/p>&#xA;    &#xA;    &lt;div style=&quot;background-color: #f9f9f9; padding: 15px; border-radius: 5px; border-left: 4px solid #4caf50; margin: 20px 0;&quot;>&#xA;      &lt;p style=&quot;margin: 5px 0;&quot;>&lt;strong>Fecha y hora:&lt;/strong> ${cita.fechaSolicitada}&lt;/p>&#xA;      &lt;p style=&quot;margin: 5px 0;&quot;>&lt;strong>Responsable asignado:&lt;/strong> ${cita.empleadoAsignado}&lt;/p>&#xA;    &lt;/div>&#xA;    &#xA;    &lt;p>Si necesitas realizar cualquier cambio en tu reserva o no puedes asistir, por favor &lt;strong>responde directamente a este correo&lt;/strong> con antelación para que podamos reorganizar la agenda.&lt;/p>&#xA;    &#xA;    &lt;p>¡Gracias por confiar en nosotros!&lt;/p>&#xA;    &#xA;    &lt;hr style=&quot;border: 0; border-top: 1px solid #eee; margin: 25px 0;&quot;>&#xA;    &#xA;    &lt;p style=&quot;font-size: 0.9em; color: #888; text-align: center;&quot;>&#xA;      Atentamente,&lt;br>&#xA;      &lt;strong>Servicio de Atención&lt;/strong>&#xA;    &lt;/p>&#xA;  &lt;/div>&#xA;&lt;/div>" type="TYPE_PATTERN" returnTypeFixed="true">
+                  <referencedElements xmi:type="expression:Expression" xmi:id="_FDr18EY3EfGwJ4PRPX0G2g" name="cita.nombreCliente" content="cita.nombreCliente" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT">
+                    <referencedElements xmi:type="expression:Expression" xmi:id="_FDr18UY3EfGwJ4PRPX0G2g" name="cita" content="cita" type="TYPE_VARIABLE" returnType="com.company.model.Cita">
+                      <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_FDr18kY3EfGwJ4PRPX0G2g" name="cita" dataType="_mwx4NEVNEfGXst6p_f55Uw" className="com.company.model.Cita"/>
+                    </referencedElements>
+                  </referencedElements>
+                  <referencedElements xmi:type="expression:Expression" xmi:id="_FDr180Y3EfGwJ4PRPX0G2g" name="cita.prenda" content="cita.prenda" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT">
+                    <referencedElements xmi:type="expression:Expression" xmi:id="_FDr19EY3EfGwJ4PRPX0G2g" name="cita" content="cita" type="TYPE_VARIABLE" returnType="com.company.model.Cita">
+                      <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_FDr19UY3EfGwJ4PRPX0G2g" name="cita" dataType="_mwx4NEVNEfGXst6p_f55Uw" className="com.company.model.Cita"/>
+                    </referencedElements>
+                  </referencedElements>
+                  <referencedElements xmi:type="expression:Expression" xmi:id="_FDr19kY3EfGwJ4PRPX0G2g" name="cita.fechaSolicitada" content="cita.fechaSolicitada" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT">
+                    <referencedElements xmi:type="expression:Expression" xmi:id="_FDr190Y3EfGwJ4PRPX0G2g" name="cita" content="cita" type="TYPE_VARIABLE" returnType="com.company.model.Cita">
+                      <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_FDr1-EY3EfGwJ4PRPX0G2g" name="cita" dataType="_mwx4NEVNEfGXst6p_f55Uw" className="com.company.model.Cita"/>
+                    </referencedElements>
+                  </referencedElements>
+                  <referencedElements xmi:type="expression:Expression" xmi:id="_FDr1-UY3EfGwJ4PRPX0G2g" name="cita.empleadoAsignado" content="cita.empleadoAsignado" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT">
+                    <referencedElements xmi:type="expression:Expression" xmi:id="_FDr1-kY3EfGwJ4PRPX0G2g" name="cita" content="cita" type="TYPE_VARIABLE" returnType="com.company.model.Cita">
+                      <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_FDr1-0Y3EfGwJ4PRPX0G2g" name="cita" dataType="_mwx4NEVNEfGXst6p_f55Uw" className="com.company.model.Cita"/>
+                    </referencedElements>
+                  </referencedElements>
+                </expression>
               </parameters>
               <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_B2AelUWGEfGNMp7L6JEwyg" key="headers">
                 <expression xmi:type="expression:TableExpression" xmi:id="_B2AelkWGEfGNMp7L6JEwyg"/>
@@ -206,6 +227,56 @@
           <cardinalityExpression xmi:type="expression:Expression" xmi:id="_LWz7xUWFEfGNMp7L6JEwyg" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
           <iteratorExpression xmi:type="expression:Expression" xmi:id="_LWz7x0WFEfGNMp7L6JEwyg" name="multiInstanceIterator" content="multiInstanceIterator" type="MULTIINSTANCE_ITERATOR_TYPE" returnType="java.lang.Object" returnTypeFixed="true"/>
           <completionCondition xmi:type="expression:Expression" xmi:id="_LWz7xkWFEfGNMp7L6JEwyg" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+        </elements>
+      </elements>
+      <elements xmi:type="process:Lane" xmi:id="_l2T-YEVOEfGXst6p_f55Uw" name="Modista" actor="_0f1pAEVNEfGXst6p_f55Uw">
+        <elements xmi:type="process:Task" xmi:id="_r4MBQEVOEfGXst6p_f55Uw" name="AsignarCita" outgoing="_MSYzMEWFEfGNMp7L6JEwyg" incoming="_3np5EEVOEfGXst6p_f55Uw" actor="_0f1pAEVNEfGXst6p_f55Uw">
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_r4MBQkVOEfGXst6p_f55Uw" name="" content="" returnTypeFixed="true"/>
+          <dynamicDescription xmi:type="expression:Expression" xmi:id="_r4MBQUVOEfGXst6p_f55Uw" name="" content="" returnTypeFixed="true"/>
+          <stepSummary xmi:type="expression:Expression" xmi:id="_r4MBQ0VOEfGXst6p_f55Uw" name="" content="" returnTypeFixed="true"/>
+          <operations xmi:type="expression:Operation" xmi:id="_D0jeUkVQEfGXst6p_f55Uw">
+            <leftOperand xmi:type="expression:Expression" xmi:id="_D0jeU0VQEfGXst6p_f55Uw" name="cita" content="cita" type="TYPE_VARIABLE" returnType="com.company.model.Cita">
+              <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_D0jeVEVQEfGXst6p_f55Uw" name="cita" dataType="_mwx4NEVNEfGXst6p_f55Uw" className="com.company.model.Cita"/>
+            </leftOperand>
+            <rightOperand xmi:type="expression:Expression" xmi:id="_D0jeVUVQEfGXst6p_f55Uw" name="citaInput.empleadoAsignado" content="citaInput?.empleadoAsignado" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT">
+              <referencedElements xmi:type="process:ContractInput" xmi:id="_D0jeVkVQEfGXst6p_f55Uw" name="citaInput" type="COMPLEX" createMode="false"/>
+            </rightOperand>
+            <operator xmi:type="expression:Operator" xmi:id="_D0jeV0VQEfGXst6p_f55Uw" type="JAVA_METHOD" expression="setEmpleadoAsignado">
+              <inputTypes>java.lang.String</inputTypes>
+            </operator>
+          </operations>
+          <loopCondition xmi:type="expression:Expression" xmi:id="_r4MBREVOEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+          <loopMaximum xmi:type="expression:Expression" xmi:id="_r4MBRUVOEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <cardinalityExpression xmi:type="expression:Expression" xmi:id="_r4MBRkVOEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <iteratorExpression xmi:type="expression:Expression" xmi:id="_r4MBSEVOEfGXst6p_f55Uw" name="multiInstanceIterator" content="multiInstanceIterator" type="MULTIINSTANCE_ITERATOR_TYPE" returnType="java.lang.Object" returnTypeFixed="true"/>
+          <completionCondition xmi:type="expression:Expression" xmi:id="_r4MBR0VOEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+          <formMapping xmi:type="process:FormMapping" xmi:id="_r4MBSkVOEfGXst6p_f55Uw">
+            <targetForm xmi:type="expression:Expression" xmi:id="_M7SZUEVQEfGXst6p_f55Uw" name="FormularioAsignarCita" content="5f37aab8-4ff5-49a6-a47b-5f3543510b7c" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+          </formMapping>
+          <filters xmi:type="process:ActorFilter" xmi:id="_kS_iwEVUEfGXst6p_f55Uw" name="especialidad" definitionId="bonita-actorfilter-custom-user-info" definitionVersion="1.0.0">
+            <configuration xmi:type="connectorconfiguration:ConnectorConfiguration" xmi:id="_kS_iwUVUEfGXst6p_f55Uw" definitionId="bonita-actorfilter-custom-user-info" version="1.0.0">
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_kS_iwkVUEfGXst6p_f55Uw" key="customUserInfoName">
+                <expression xmi:type="expression:Expression" xmi:id="_kS_iw0VUEfGXst6p_f55Uw" name="especialidad" content="especialidad" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_kS_ixEVUEfGXst6p_f55Uw" key="customUserInfoValue">
+                <expression xmi:type="expression:Expression" xmi:id="_kS_ixUVUEfGXst6p_f55Uw" name="customUserInfoValue()" content="cita.prenda" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnTypeFixed="true">
+                  <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_kS_ixkVUEfGXst6p_f55Uw" name="cita" dataType="_mwx4NEVNEfGXst6p_f55Uw" className="com.company.model.Cita"/>
+                </expression>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_kS_ix0VUEfGXst6p_f55Uw" key="usePartialMatch">
+                <expression xmi:type="expression:Expression" xmi:id="_kS_iyEVUEfGXst6p_f55Uw" name="false" content="false" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_kS_iyUVUEfGXst6p_f55Uw" key="autoAssign">
+                <expression xmi:type="expression:Expression" xmi:id="_kS_iykVUEfGXst6p_f55Uw" name="true" content="true" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+              </parameters>
+            </configuration>
+          </filters>
+          <contract xmi:type="process:Contract" xmi:id="_r4MBSUVOEfGXst6p_f55Uw">
+            <inputs xmi:type="process:ContractInput" xmi:id="_D0jeUEVQEfGXst6p_f55Uw" name="citaInput" type="COMPLEX" dataReference="cita" createMode="false">
+              <inputs xmi:type="process:ContractInput" xmi:id="_D0jeUUVQEfGXst6p_f55Uw" name="empleadoAsignado" createMode="false"/>
+            </inputs>
+          </contract>
+          <expectedDuration xmi:type="expression:Expression" xmi:id="_r4MBTEVOEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Long" returnTypeFixed="true"/>
         </elements>
         <elements xmi:type="process:ServiceTask" xmi:id="_AyMmIEWIEfGNMp7L6JEwyg" name="EnvioRechazo" outgoing="_rC2dcEWKEfGNMp7L6JEwyg" incoming="_CijJcEWIEfGNMp7L6JEwyg">
           <dynamicLabel xmi:type="expression:Expression" xmi:id="_AyNNMUWIEfGNMp7L6JEwyg" name="" content="" returnTypeFixed="true"/>
@@ -258,13 +329,26 @@
                 <expression xmi:type="expression:Expression" xmi:id="_UycofkWIEfGNMp7L6JEwyg" content="" returnTypeFixed="true"/>
               </parameters>
               <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_Uycof0WIEfGNMp7L6JEwyg" key="subject">
-                <expression xmi:type="expression:Expression" xmi:id="_UycogEWIEfGNMp7L6JEwyg" name="Cita rechazada" content="Cita rechazada" returnTypeFixed="true"/>
+                <expression xmi:type="expression:Expression" xmi:id="_UycogEWIEfGNMp7L6JEwyg" name="subject()" content="&quot;Información sobre su cita para: ${cita.prenda}&quot;&#xD;&#xA;" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnTypeFixed="true">
+                  <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_iF2PgEY1EfGwJ4PRPX0G2g" name="cita" dataType="_mwx4NEVNEfGXst6p_f55Uw" className="com.company.model.Cita"/>
+                </expression>
               </parameters>
               <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_UycogUWIEfGNMp7L6JEwyg" key="html">
                 <expression xmi:type="expression:Expression" xmi:id="_UycogkWIEfGNMp7L6JEwyg" name="true" content="true" returnType="java.lang.Boolean" returnTypeFixed="true"/>
               </parameters>
               <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_Uycog0WIEfGNMp7L6JEwyg" key="message">
-                <expression xmi:type="expression:Expression" xmi:id="_UycohEWIEfGNMp7L6JEwyg" name="&lt;pattern-expression>" content="&lt;p>Email de prueba&lt;/p>&#xA;" type="TYPE_PATTERN" returnTypeFixed="true"/>
+                <expression xmi:type="expression:Expression" xmi:id="_UycohEWIEfGNMp7L6JEwyg" name="&lt;pattern-expression>" content="&lt;div style=&quot;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #444; max-width: 600px; border: 1px solid #eee; border-radius: 10px; overflow: hidden;&quot;>&#xD;&#xA;  &lt;div style=&quot;background-color: #f8f9fa; padding: 20px; text-align: center; border-bottom: 2px solid #e9ecef;&quot;>&#xD;&#xA;    &lt;h2 style=&quot;color: #6c757d; margin: 0;&quot;>Actualización de Solicitud&lt;/h2>&#xD;&#xA;  &lt;/div>&#xD;&#xA;  &lt;div style=&quot;padding: 30px; line-height: 1.6;&quot;>&#xD;&#xA;    &lt;p>Estimado/a &lt;strong>${cita.nombreCliente}&lt;/strong>,&lt;/p>&#xD;&#xA;    &lt;p>Le agradecemos sinceramente el interés en nuestros servicios para el arreglo de su &lt;strong>${cita.prenda}&lt;/strong>.&lt;/p>&#xD;&#xA;    &lt;p>Tras revisar nuestra disponibilidad para la fecha solicitada, lamentamos informarle que &lt;strong>no nos es posible confirmar su cita en esta ocasión&lt;/strong> debido a que contamos con el cupo completo.&lt;/p>&#xD;&#xA;    &lt;p>Sentimos los inconvenientes. Esperamos poder atenderle en otra ocasión.&lt;/p>&#xD;&#xA;    &lt;hr style=&quot;border: 0; border-top: 1px solid #eee; margin: 20px 0;&quot;>&#xD;&#xA;    &lt;p style=&quot;font-size: 0.9em; color: #888;&quot;>Atentamente,&lt;br>&lt;strong>El Equipo del Taller&lt;/strong>&lt;/p>&#xD;&#xA;  &lt;/div>&#xD;&#xA;&lt;/div>" type="TYPE_PATTERN" returnTypeFixed="true">
+                  <referencedElements xmi:type="expression:Expression" xmi:id="_LoYugEY2EfGwJ4PRPX0G2g" name="cita.nombreCliente" content="cita.nombreCliente" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT">
+                    <referencedElements xmi:type="expression:Expression" xmi:id="_LoYugUY2EfGwJ4PRPX0G2g" name="cita" content="cita" type="TYPE_VARIABLE" returnType="com.company.model.Cita">
+                      <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_LoYugkY2EfGwJ4PRPX0G2g" name="cita" dataType="_mwx4NEVNEfGXst6p_f55Uw" className="com.company.model.Cita"/>
+                    </referencedElements>
+                  </referencedElements>
+                  <referencedElements xmi:type="expression:Expression" xmi:id="_LoYug0Y2EfGwJ4PRPX0G2g" name="cita.prenda" content="cita.prenda" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT">
+                    <referencedElements xmi:type="expression:Expression" xmi:id="_LoYuhEY2EfGwJ4PRPX0G2g" name="cita" content="cita" type="TYPE_VARIABLE" returnType="com.company.model.Cita">
+                      <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_LoYuhUY2EfGwJ4PRPX0G2g" name="cita" dataType="_mwx4NEVNEfGXst6p_f55Uw" className="com.company.model.Cita"/>
+                    </referencedElements>
+                  </referencedElements>
+                </expression>
               </parameters>
               <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_UycohUWIEfGNMp7L6JEwyg" key="headers">
                 <expression xmi:type="expression:TableExpression" xmi:id="_UycohkWIEfGNMp7L6JEwyg"/>
@@ -287,61 +371,11 @@
           <completionCondition xmi:type="expression:Expression" xmi:id="_AyNNNkWIEfGNMp7L6JEwyg" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
         </elements>
       </elements>
-      <elements xmi:type="process:Lane" xmi:id="_l2T-YEVOEfGXst6p_f55Uw" name="Modista" actor="_0f1pAEVNEfGXst6p_f55Uw">
-        <elements xmi:type="process:Task" xmi:id="_r4MBQEVOEfGXst6p_f55Uw" name="AsignarCita" outgoing="_MSYzMEWFEfGNMp7L6JEwyg" incoming="_3np5EEVOEfGXst6p_f55Uw" actor="_0f1pAEVNEfGXst6p_f55Uw">
-          <dynamicLabel xmi:type="expression:Expression" xmi:id="_r4MBQkVOEfGXst6p_f55Uw" name="" content="" returnTypeFixed="true"/>
-          <dynamicDescription xmi:type="expression:Expression" xmi:id="_r4MBQUVOEfGXst6p_f55Uw" name="" content="" returnTypeFixed="true"/>
-          <stepSummary xmi:type="expression:Expression" xmi:id="_r4MBQ0VOEfGXst6p_f55Uw" name="" content="" returnTypeFixed="true"/>
-          <operations xmi:type="expression:Operation" xmi:id="_D0jeUkVQEfGXst6p_f55Uw">
-            <leftOperand xmi:type="expression:Expression" xmi:id="_D0jeU0VQEfGXst6p_f55Uw" name="cita" content="cita" type="TYPE_VARIABLE" returnType="com.company.model.Cita">
-              <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_D0jeVEVQEfGXst6p_f55Uw" name="cita" dataType="_mwx4NEVNEfGXst6p_f55Uw" className="com.company.model.Cita"/>
-            </leftOperand>
-            <rightOperand xmi:type="expression:Expression" xmi:id="_D0jeVUVQEfGXst6p_f55Uw" name="citaInput.empleadoAsignado" content="citaInput?.empleadoAsignado" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT">
-              <referencedElements xmi:type="process:ContractInput" xmi:id="_D0jeVkVQEfGXst6p_f55Uw" name="citaInput" type="COMPLEX" createMode="false"/>
-            </rightOperand>
-            <operator xmi:type="expression:Operator" xmi:id="_D0jeV0VQEfGXst6p_f55Uw" type="JAVA_METHOD" expression="setEmpleadoAsignado">
-              <inputTypes>java.lang.String</inputTypes>
-            </operator>
-          </operations>
-          <loopCondition xmi:type="expression:Expression" xmi:id="_r4MBREVOEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
-          <loopMaximum xmi:type="expression:Expression" xmi:id="_r4MBRUVOEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
-          <cardinalityExpression xmi:type="expression:Expression" xmi:id="_r4MBRkVOEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
-          <iteratorExpression xmi:type="expression:Expression" xmi:id="_r4MBSEVOEfGXst6p_f55Uw" name="multiInstanceIterator" content="multiInstanceIterator" type="MULTIINSTANCE_ITERATOR_TYPE" returnType="java.lang.Object" returnTypeFixed="true"/>
-          <completionCondition xmi:type="expression:Expression" xmi:id="_r4MBR0VOEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
-          <formMapping xmi:type="process:FormMapping" xmi:id="_r4MBSkVOEfGXst6p_f55Uw">
-            <targetForm xmi:type="expression:Expression" xmi:id="_M7SZUEVQEfGXst6p_f55Uw" name="FormularioAsignarCita" content="5f37aab8-4ff5-49a6-a47b-5f3543510b7c" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
-          </formMapping>
-          <filters xmi:type="process:ActorFilter" xmi:id="_kS_iwEVUEfGXst6p_f55Uw" name="especialidad" definitionId="bonita-actorfilter-custom-user-info" definitionVersion="1.0.0">
-            <configuration xmi:type="connectorconfiguration:ConnectorConfiguration" xmi:id="_kS_iwUVUEfGXst6p_f55Uw" definitionId="bonita-actorfilter-custom-user-info" version="1.0.0">
-              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_kS_iwkVUEfGXst6p_f55Uw" key="customUserInfoName">
-                <expression xmi:type="expression:Expression" xmi:id="_kS_iw0VUEfGXst6p_f55Uw" name="especialidad" content="especialidad" returnTypeFixed="true"/>
-              </parameters>
-              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_kS_ixEVUEfGXst6p_f55Uw" key="customUserInfoValue">
-                <expression xmi:type="expression:Expression" xmi:id="_kS_ixUVUEfGXst6p_f55Uw" name="customUserInfoValue()" content="cita.prenda" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnTypeFixed="true">
-                  <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_kS_ixkVUEfGXst6p_f55Uw" name="cita" dataType="_mwx4NEVNEfGXst6p_f55Uw" className="com.company.model.Cita"/>
-                </expression>
-              </parameters>
-              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_kS_ix0VUEfGXst6p_f55Uw" key="usePartialMatch">
-                <expression xmi:type="expression:Expression" xmi:id="_kS_iyEVUEfGXst6p_f55Uw" name="false" content="false" returnType="java.lang.Boolean" returnTypeFixed="true"/>
-              </parameters>
-              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_kS_iyUVUEfGXst6p_f55Uw" key="autoAssign">
-                <expression xmi:type="expression:Expression" xmi:id="_kS_iykVUEfGXst6p_f55Uw" name="true" content="true" returnType="java.lang.Boolean" returnTypeFixed="true"/>
-              </parameters>
-            </configuration>
-          </filters>
-          <contract xmi:type="process:Contract" xmi:id="_r4MBSUVOEfGXst6p_f55Uw">
-            <inputs xmi:type="process:ContractInput" xmi:id="_D0jeUEVQEfGXst6p_f55Uw" name="citaInput" type="COMPLEX" dataReference="cita" createMode="false">
-              <inputs xmi:type="process:ContractInput" xmi:id="_D0jeUUVQEfGXst6p_f55Uw" name="empleadoAsignado" createMode="false"/>
-            </inputs>
-          </contract>
-          <expectedDuration xmi:type="expression:Expression" xmi:id="_r4MBTEVOEfGXst6p_f55Uw" name="" content="" returnType="java.lang.Long" returnTypeFixed="true"/>
-        </elements>
-      </elements>
       <data xmi:type="process:BusinessObjectData" xmi:id="_9-VjwEVNEfGXst6p_f55Uw" name="cita" dataType="_mwx4NEVNEfGXst6p_f55Uw" className="com.company.model.Cita">
         <defaultValue xmi:type="expression:Expression" xmi:id="_9-VjwUVNEfGXst6p_f55Uw" name="" content="" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="java.lang.Object"/>
       </data>
       <formMapping xmi:type="process:FormMapping" xmi:id="_mwx4FEVNEfGXst6p_f55Uw">
-        <targetForm xmi:type="expression:Expression" xmi:id="_jxfvsEWKEfGNMp7L6JEwyg" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+        <targetForm xmi:type="expression:Expression" xmi:id="_gD-B4EY2EfGwJ4PRPX0G2g" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
       </formMapping>
       <overviewFormMapping xmi:type="process:FormMapping" xmi:id="_mwx4FkVNEfGXst6p_f55Uw">
         <targetForm xmi:type="expression:Expression" xmi:id="_mwx4F0VNEfGXst6p_f55Uw" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
@@ -464,10 +498,6 @@
               <children xmi:type="notation:DecorationNode" xmi:id="_LW1w8kWFEfGNMp7L6JEwyg" type="5017"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LW1w8UWFEfGNMp7L6JEwyg" x="1238" y="105" width="178" height="89"/>
             </children>
-            <children xmi:type="notation:Shape" xmi:id="_AyNNOEWIEfGNMp7L6JEwyg" type="3027" element="_AyMmIEWIEfGNMp7L6JEwyg" fontName="Segoe UI" fillColor="14334392" lineColor="10710316">
-              <children xmi:type="notation:DecorationNode" xmi:id="_AyN0QEWIEfGNMp7L6JEwyg" type="5017"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AyNNOUWIEfGNMp7L6JEwyg" x="873" y="88" width="153" height="76"/>
-            </children>
           </children>
           <styles xmi:type="notation:DescriptionStyle" xmi:id="_KNMGQUVOEfGXst6p_f55Uw"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_KNMGQkVOEfGXst6p_f55Uw" fontName="Segoe UI"/>
@@ -481,6 +511,10 @@
             <children xmi:type="notation:Shape" xmi:id="_r4Q5wEVOEfGXst6p_f55Uw" type="3005" element="_r4MBQEVOEfGXst6p_f55Uw" fontName="Segoe UI" fillColor="14334392" lineColor="10710316">
               <children xmi:type="notation:DecorationNode" xmi:id="_r4Rg0EVOEfGXst6p_f55Uw" type="5005"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_r4Q5wUVOEfGXst6p_f55Uw" x="581" y="114" width="138" height="69"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_AyNNOEWIEfGNMp7L6JEwyg" type="3027" element="_AyMmIEWIEfGNMp7L6JEwyg" fontName="Segoe UI" fillColor="14334392" lineColor="10710316">
+              <children xmi:type="notation:DecorationNode" xmi:id="_AyN0QEWIEfGNMp7L6JEwyg" type="5017"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AyNNOUWIEfGNMp7L6JEwyg" x="873" y="46" width="153" height="76"/>
             </children>
           </children>
           <styles xmi:type="notation:DescriptionStyle" xmi:id="_l2VMgUVOEfGXst6p_f55Uw"/>
