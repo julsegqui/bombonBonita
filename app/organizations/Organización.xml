@@ -10,6 +10,7 @@
     <user userName="Mila">
       <firstName>Mila</firstName>
       <lastName>-</lastName>
+      <manager></manager>
       <personalData/>
       <professionalData>
         <email>mila@gmail.com</email>
@@ -62,6 +63,10 @@
       </customUserInfoValues>
     </user>
     <user userName="Ana">
+      <firstName>Ana</firstName>
+      <lastName>Fernandez</lastName>
+      <title>Modista</title>
+      <jobTitle>Modista</jobTitle>
       <personalData/>
       <professionalData/>
       <password encrypted="false">bpm</password>
